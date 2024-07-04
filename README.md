@@ -7,6 +7,7 @@
 
 ```js
 const HttpApplication = require("./lib/http-application");
+const HttpController = require("../lib/HttpController");
 class ProductsController extends HttpController {
   constructor() {
     super({ basePath: '/products' });
