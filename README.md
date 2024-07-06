@@ -57,3 +57,35 @@ application.listen(() => {
 
 then just run `node index.js` and try to call every http query using `curl` or any http client.
 
+# Features
+
+## Get all server routes mapping
+
+```js
+const HttpApplication = require("./lib/http-application");
+const HttpController = require("./lib/HttpController");
+
+const PORT = 9000
+const application = new HttpApplication(PORT);
+
+class SettingController extends HttpController {
+  constructor() {
+    super({basePath: '/setting'});
+  }
+
+  registerRouterHandler() {
+    super.registerRoute('/', this.getAllRoutes)
+  }
+
+  getAllRoutes(req, res) {
+    const routesMap = application.getRoutesMap();
+    res.status(200).send(routesMap)
+  }
+}
+
+application.registerController(new SettingController())
+
+application.listen(() => {
+  console.warn('server is running on ', PORT)
+})
+```
