@@ -20,17 +20,15 @@ class ProductsController extends HttpController {
   }
 
   getProducts(req, res) {
-    res.writeHead(200)
-    res.end('Get products!')
+    res.status(200).send('Get products!')
   }
 
   getProductsById(req, res) {
-    res.writeHead(200)
-    res.end('Get getProductsById!')
+    res.status(200).send('Get getProductsById!')
   }
 
   postProduct(req, res) {
-    console.warn('POST products')
+    res.status(201).send('POST products')
   }
 }
 
